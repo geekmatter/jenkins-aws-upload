@@ -12,6 +12,7 @@ pipeline {
          }      
          stage('Upload to AWS') {
               steps {
+                  dir('/Users/geekminds/jenkins')
                   withAWS(region:'us-west-2',credentials:'jenkins_aws') {
                   sh 'echo "Uploading content with AWS creds"'
                       s3Upload(bucket:'databucketgeekminds', path:'/Users/geekminds/docker/', includePathPattern:'**/*.*', workingDir:'airlines')
